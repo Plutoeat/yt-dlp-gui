@@ -45,7 +45,6 @@ class Thread(QRunnable):
     def run(self):
         ytd_opt = self.loadYTDLPConfig()
         all_opt = mergeDict(self.communication.ytd_opt, ytd_opt)
-        print(all_opt)
         with YoutubeDL(all_opt) as ydl:
             ydl.download(self.thread_logo)
         self.communication.ytd_opt = {}

@@ -31,7 +31,7 @@ def generate_config_yml():
         base_path = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
     else:
         base_path = os.getenv("USERPROFILE")
-    path = os.path.normpath(os.path.join(base_path, 'Videos')).replace('\\', '/')
+    path = os.path.normpath(os.path.join(base_path, 'Videos\\Youtube')).replace('\\', '/')
     '''
     also you con set path for example:
         'paths': {'home': path, 'temp': os.path.join(path, Temp)}
@@ -48,7 +48,12 @@ def generate_config_yml():
             'proxy': None,
             'match_filter': None,
             'ratelimit': None,
-            'paths': {"home": path},
+            'paths': {
+                "home": path,
+                'temp': os.path.join(path, 'Temp').replace('\\', '/'),
+                "subtitle": os.path.join(path, 'Subs').replace('\\', '/'),
+                "thumbnail": os.path.join(path, 'Thumbnails').replace('\\', '/'),
+            },
             'format': "bv+ba/b",
             'external_downloader': None,
             'external_downloader_args': None

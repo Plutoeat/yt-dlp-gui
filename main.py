@@ -68,6 +68,9 @@ class NSettings(QDialog, Ui_Dialog):
             dict_path['home'] = None
         else:
             dict_path['home'] = self.lineEdit_4.text()
+            dict_path['temp'] = os.path.join(self.lineEdit_4.text(), 'Temp')
+            dict_path['subtitle'] = os.path.join(self.lineEdit_4.text(), 'Subs')
+            dict_path['thumbnail'] = os.path.join(self.lineEdit_4.text(), 'Thumbnails')
         if self.radioButton.isChecked():
             dict_var['format'] = 'b'
         elif self.radioButton_2.isChecked():
@@ -91,6 +94,9 @@ class MoreOT(QDialog, Ui_More_Dialog):
         self.communication = communication
         self.communication.pushButton.setEnabled(True)
         self.checkBox_7.toggled.connect(self.setLineTextEnabled)
+        self.checkBox_4.toggled.connect(self.setRadioButtonEnabled)
+        self.checkBox_6.toggled.connect(self.setRadioButtonEnabled)
+        self.checkBox_7.toggled.connect(self.setRadioButtonEnabled)
         opt = {
             'skip_download': True,
             'listsubtitles': True
@@ -107,6 +113,7 @@ class MoreOT(QDialog, Ui_More_Dialog):
 
     def accept(self) -> None:
         super(MoreOT, self).accept()
+        self.communication.ytd_opt['postprocessors'] = []
         if self.checkBox.isChecked():
             self.communication.ytd_opt['writedescription'] = True
         if self.checkBox_2.isChecked():
@@ -114,10 +121,10 @@ class MoreOT(QDialog, Ui_More_Dialog):
         if self.checkBox_3.isChecked():
             self.communication.ytd_opt['getcomments'] = True
         if self.checkBox_4.isChecked():
-            self.communication.ytd_opt['postprocessors'] = [{
+            self.communication.ytd_opt['postprocessors'].append({
                 'key': 'FFmpegExtractAudio',
                 'preferredcodec': 'm4a',
-            }]
+            })
         if self.checkBox_5.isChecked():
             self.communication.ytd_opt['writethumbnail'] = True
         if self.checkBox_6.isChecked():
@@ -126,6 +133,10 @@ class MoreOT(QDialog, Ui_More_Dialog):
             self.communication.ytd_opt['writesubtitles'] = True
             if self.lineEdit.text() != '':
                 self.communication.ytd_opt['subtitleslangs'] = self.lineEdit.text().split(',')
+            if self.radioButton.isChecked():
+                self.communication.ytd_opt['postprocessors'].append({
+                    'key': 'FFmpegEmbedSubtitle',
+                })
         self.communication.pushButton.setEnabled(False)
         self.communication.statusbar.showMessage("开始下载")
         self.communication.thread.start()
@@ -139,6 +150,13 @@ class MoreOT(QDialog, Ui_More_Dialog):
             self.lineEdit.setEnabled(True)
         else:
             self.lineEdit.setEnabled(False)
+
+    def setRadioButtonEnabled(self):
+        if self.checkBox_7.isChecked() and not self.checkBox_4.isChecked() and not self.checkBox_6.isChecked():
+            self.radioButton.setEnabled(True)
+        else:
+            self.radioButton.setChecked(False)
+            self.radioButton.setEnabled(False)
 
 
 class Main(QMainWindow, Ui_MainWindow):
@@ -203,15 +221,15 @@ class Main(QMainWindow, Ui_MainWindow):
         moreOT = MoreOT(self)
         moreOT.nydl.run(self.textEdit.toPlainText().split('\n'))
         moreOT.nydl.quit()
-        moreOT.exec_()
+        moreOT.exec()
 
 
 if __name__ == "__main__":
     if not os.path.exists("./config"):
         os.mkdir("./config")
-    if not os.path.isfile("./config/yt-dlp.yml"):
+    if not os.path.isfile("config/yt-dlp.yml"):
         rw_config.generate_config_yml()
 
     app = QApplication([])
     ui = Main()
-    sys.exit(app.exec_())
+    sys.exit(app.exec())

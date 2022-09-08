@@ -68,6 +68,7 @@ python main.py
 | 跳过下载(skip download video) | --skip-download     | [Verbosity and Simulation Options](https://github.com/yt-dlp/yt-dlp#verbosity-and-simulation-options) | 不要下载视频，但要全部写出相关文件（别名：--no-download）    | Do not download the video but write all related files (Alias: --no-download) |
 | 下载字幕(write subs)          | --write-subs        | [Subtitle Options](https://github.com/yt-dlp/yt-dlp#subtitle-options) | 写字幕文件                                                   | Write subtitle file                                          |
 | 下载字幕的语言                | --sub-langs LANGS   | [Subtitle Options](https://github.com/yt-dlp/yt-dlp#subtitle-options) | 要下载的字幕语言（可以 是正则表达式）或用逗号分隔的“全部”，例如 --sub-langs "en.*,ja"。您可以在前缀 带有“-”的语言代码将其排除在外 请求的语言，例如--子语言 所有，-live_chat。使用 --list-subs 作为列表 可用的语言标签 | Languages of the subtitles to download (can be regex) or "all" separated by commas, e.g. --sub-langs "en.*,ja". You can prefix the language code with a "-" to exclude it from the requested languages, e.g. --sub-langs all,-live_chat. Use --list-subs for a list of available language tags |
+| 嵌入字幕(embed subtitles)     | --embed-subs        | [Post-Processing Options](https://github.com/yt-dlp/yt-dlp#post-processing-options) | 在视频中嵌入字幕（仅适用于 mp4、 webm 和 mkv 视频）          | Embed subtitles in the video (only for mp4, webm and mkv videos) |
 
 ## 感谢 | Thanks
 

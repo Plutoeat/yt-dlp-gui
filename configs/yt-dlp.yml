@@ -1,0 +1,14 @@
+# @Author: Gaius Pluto
+notice: 'Please do not modify this file easily.'
+default:
+  skip_playlist_after_errors: 10
+  # download_archive: PATH
+  # Below one: Requires ffmpeg and ffprobe
+  # concurrent_fragment_downloads: 3
+  retry_sleep_functions:
+    http: 3
+  # Below two: Need download other downloader and set its env path by yourself
+  # external_downloader:
+  #   dash: native
+  # external_downloader_args: "pls explore by yourself."
+  cachedir: false

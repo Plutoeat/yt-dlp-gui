@@ -1,0 +1,23 @@
+tooltips:
+  network_options:
+    proxy: "proxy, e.g. socks5://user:pass@127.0.0.1:1080/"
+  video_selection:
+    playlist_items: "Comma separated playlist_index of the items to download，e.g. '1:3,7,-5::2' used on a playlist of size 15 will download the items at index 1,2,3,7,11,13,15"
+    min_filesize: "Abort download if filesize is smaller than SIZE, e.g. '50*1024' means 50k"
+    max_filesize: "Abort download if filesize is larger than SIZE, e.g. '50*1024' means 50k"
+    noplaylist: "Download only the video, if the URL refers to a video and a playlist"
+  download_options:
+    ratelimit: "Maximum download rate in bytes per second, e.g. '50*1024' means 50k"
+  filesystem_options:
+    paths: "The paths where the files should be downloaded"
+    outtmpl: "Output filename template"
+    writedescription: "download description file"
+    writeinfojson: "download info json"
+    getcomments: "download comments"
+    thumbnail_options:
+      writethumbnail: "download thumbanil"
+    video_format_options:
+      format: "download format, if merge need ffmpeg and ffprobe"
+    subtitle_options:
+      writesubtitles: "download subtitles"
+      subtitleslangs: "LANGS, default all, exclude live chat"

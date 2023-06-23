@@ -1,0 +1,23 @@
+tooltips:
+  network_options:
+    proxy: "代理地址，例：socks5://user:pass@127.0.0.1:1080/"
+  video_selection:
+    playlist_items: "播放列表项目，默认全选，例：1:3,7,-5::2指长度15的播放列表取1,2,3,7,11,13,15"
+    min_filesize: "文件大小小于该值中断下载，例：'50*1024' 表示 50k"
+    max_filesize: "文件大小大于该值中断下载，例：'50*1024' 表示 50k"
+    noplaylist: "仅下载视频（如果 URL 引用视频和播放列表）"
+  download_options:
+    ratelimit: "最大下载速率（以字节/秒为单位），例：'50*1024' 表示 50k"
+  filesystem_options:
+    paths: "下载文件的路径"
+    outtmpl: "输出文件名模板"
+    writedescription: "下载描述文件"
+    writeinfojson: "下载元数据"
+    getcomments: "下载评论"
+  thumbnail_options:
+    writethumbnail: "下载缩略图"
+  video_format_options:
+    format: "下载格式，如需合并音视频等其他操作请下载ffmpeg等工具自行配置"
+  subtitle_options:
+    writesubtitles: "下载字幕"
+    subtitleslangs: "语言，默认所有，排除聊天室"

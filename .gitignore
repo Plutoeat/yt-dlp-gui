@@ -38,3 +38,6 @@ video/
 configs/app_settings.json
 configs/download_history.json
 configs/user_presets.json
+
+# AI
+.claude/
